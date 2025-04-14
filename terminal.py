@@ -61,7 +61,6 @@ while chances != 7:
     
     inp.append(user)
     
-    
     if user not in alphabet:
         erreur = 1
     if len(user) != 1:

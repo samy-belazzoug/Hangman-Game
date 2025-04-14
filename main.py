@@ -10,7 +10,7 @@ WIDTH = 1080
 HEIGHT = 720
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 
-#COLORS ------------------------------------------------------------------------------
+#COULEURS ----------------------------------------------------------------------------
 
 ROUGE = (255,0,0)
 VERT = (0,200,0)
@@ -75,6 +75,7 @@ win = font.render("Et c'est gagné !",True,VERT)
 winR = win.get_rect(topleft=(450,245))
 lose = font.render("Vous avez perdu..",True,ROUGE)
 loseR = lose.get_rect(topleft=(450,245))
+
 #FONCTIONS ----------------------------------------------------------------------------
 
 def remplace(st:str,i:int,s:str)->str:
@@ -109,14 +110,15 @@ while running:
     utilise = font.render(f"Lettres utilisés : {lettres}",True,NOIR)
     utiliseR = utilise.get_rect(topleft=(330,70))
     screen.blit(utilise,utiliseR)
-    #JEU -----------------------------------------------------------------------
-   
+
+    #JEU -----------------------------------------------------------------------------
+
     mask = fontbold.render(masque,True,NOIR)
     maskR = mask.get_rect(topleft=(400,140))
     screen.blit(mask,maskR)
-    
-    #VERIFICATIONS -------------------------------------------------------------        
-   
+
+    #VERIFICATIONS ------------------------------------------------------------------- 
+
     if "_" not in masque:
         screen.blit(win,winR)
         pygame.display.flip()
@@ -144,7 +146,8 @@ while running:
 
     keys = pygame.key.get_pressed()
     
-    #SAVOIR SI LETTRE DANS MOT -------------------------------------------------
+    #SAVOIR SI UNE LETTRE EST DANS LE MOT ----------------------------------------------
+
     pygame.time.delay(200)
     for touche in commandes:
         if keys[touche]:
@@ -167,37 +170,8 @@ while running:
                 chances += 1
                 p = 1
                 print(f"Touche {pygame.key.name(touche)} maintenue !")
-    
-    
+            
     pygame.display.flip()
 
 sys.exit()
 pygame.quit()
-
-#FONCTIONS -----------------------------------------------------------------
-
-#BOUCLE DE JEU -------------------------------------------------------------
-"""
-while chances != 7:
-
-    print(masque,"\n")
-    #SAVOIR SI LETTRE EST DANS LE MOT
-        
-        if user in mot:
-            i = 0
-        
-            while i < len(mot):
-        
-                if mot[i] == user:
-                    masque = remplace(masque,i,mot[i])
-                i += 1
-        else:
-            print(f"EH NAN IL Y EST PAS,VOUS AVEZ encore {7-chances} ESSAIS")
-            chances += 1
-        
-if chances >= 7:
-    print(masque)
-    print("Vous avez perdu. Bah alors, loser.")
-
-    erreur = 0
-"""
