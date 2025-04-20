@@ -72,9 +72,9 @@ masque = str(long*"_")
 fontbold = pygame.font.SysFont("funneldisplayextrabold",60)
 font = pygame.font.SysFont("funneldisplay",32)
 win = font.render("Et c'est gagné !",True,VERT)
-winR = win.get_rect(topleft=(450,245))
+winRect = win.get_rect(topleft=(450,245))
 lose = font.render("Vous avez perdu..",True,ROUGE)
-loseR = lose.get_rect(topleft=(450,245))
+loseRect = lose.get_rect(topleft=(450,245))
 
 #FONCTIONS ----------------------------------------------------------------------------
 
@@ -120,7 +120,7 @@ while running:
     #VERIFICATIONS ------------------------------------------------------------------- 
 
     if "_" not in masque:
-        screen.blit(win,winR)
+        screen.blit(win,winRect)
         pygame.display.flip()
         pygame.time.delay(1000)
         running = False
@@ -139,7 +139,7 @@ while running:
     if chances == 7:
         screen.blit(pendu7,(300,300))
     if chances > 7:
-        screen.blit(lose,loseR)
+        screen.blit(lose,loseRect)
         pygame.display.flip()
         pygame.time.delay(1000)
         running = False
@@ -166,7 +166,7 @@ while running:
                 p = 0
                 screen.blit(faux,fauxR)
                 pygame.display.flip()
-                pygame.time.delay(1500)
+                pygame.time.delay(1000)
                 chances += 1
                 p = 1
                 print(f"Touche {pygame.key.name(touche)} maintenue !")
